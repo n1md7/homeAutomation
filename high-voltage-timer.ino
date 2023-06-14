@@ -3,37 +3,8 @@
 #include <TimeLib.h>
 #include <Arduino.h>
 
-struct LED {
-  int green;
-  int red;
-  int neutral;
-};
-
-struct Status {
-  bool on;
-};
-
-struct Elapsed {
-  int minutes;
-  int seconds;
-};
-
-struct Timer {
-  int value;
-  int screen;
-};
-
-struct Timestamp {
-  int switchBtn;
-  int incrementBtn;
-  int decrementBtn;
-};
-
-struct Pressed {
-  bool switchBtn;
-  bool incrementBtn;
-  bool decrementBtn;
-};
+#include "structs.h"
+#include "custom-characters.h"
 
 const int buttonPin0 = A0;  // Increment Button
 const int buttonPin1 = A1;  // Decrement Button
@@ -48,20 +19,11 @@ const int MINUTE_IN_SECONDS = 60;
 unsigned long prevTick;
 
 LiquidCrystal screen(9, 8, 5, 4, 3, 2);
-Timer timer = { DEFAULT_TIME - 1, millis() };
-Timestamp timestamp = { -1000, -1000, -1000 };
-Pressed pressed = { false, false, false };
-Status pumpIs = { false };
-LED led = { A5, A4, 7 };
-
-// Define custom characters (Pixel)
-byte a[8] = { B00100, B00100, B00010, B00001, B00001, B10001, B10001, B01110 };
-byte C[8] = { B11110, B10001, B10010, B11100, B10000, B11110, B10001, B10001 };
-byte r[8] = { B10000, B10000, B10000, B10000, B11110, B10001, B10001, B10001 };
-byte T[8] = { B01010, B10101, B10101, B10101, B10101, B10101, B10101, B01001 };
-byte u[8] = { B11011, B00101, B00001, B00001, B00001, B10001, B10001, B01110 };
-byte l[8] = { B01110, B10001, B10001, B10000, B10000, B01000, B10100, B01111 };
-byte i[8] = { B01110, B10001, B10001, B10001, B10001, B10001, B10001, B10001 };
+Timer timer = {DEFAULT_TIME - 1, millis()};
+Timestamp timestamp = {-1000, -1000, -1000};
+Pressed pressed = {false, false, false};
+Status pumpIs = {false};
+LED led = {A5, A4, 7};
 
 void setup() {
   Serial.begin(9600);
@@ -81,7 +43,8 @@ void setup() {
   delay(2000);
   screen.clear();
 
-  // Defining custom characters for LCD. Max chars are restricted upto 7.
+  // Defining custom characters for LCD.
+  // Max chars are restricted upto 7.
   screen.createChar(1, C);
   screen.createChar(2, a);
   screen.createChar(3, r);
@@ -216,7 +179,7 @@ void evaluateTicks() {
   }
 }
 
-void evaluateScreenUpdate(){
+void evaluateScreenUpdate() {
   if (millis() - timer.screen > SCREEN_UPDATE_DELAY) {
     updateScreen(timer.value);
     timer.screen = millis();
