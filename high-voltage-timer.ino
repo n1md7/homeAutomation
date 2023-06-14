@@ -1,6 +1,7 @@
 #include <LiquidCrystal.h>
 #include <Time.h>
 #include <TimeLib.h>
+#include <Arduino.h>
 
 struct LED {
   int green;

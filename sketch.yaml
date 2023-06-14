@@ -1,0 +1,17 @@
+profiles:
+  uno:
+    notes: Arduino Uno
+    fqbn: arduino:avr:uno
+    platforms:
+      - platform: arduino:avr (1.8.4)
+    libraries:
+      - LiquidCrystal (1.0.7)
+      - Time (1.6.1)
+  mega:
+    notes: Arduino Mega
+    fqbn: arduino:avr:mega
+    platforms:
+      - platform: arduino:avr (1.8.4)
+    libraries:
+      - LiquidCrystal (1.0.7)
+      - Time (1.6.1)
