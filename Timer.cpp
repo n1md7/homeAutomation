@@ -4,11 +4,11 @@
 
 #include "Timer.h"
 
-#define ONE_MINUTE 1 * 60   // In milliseconds
-#define FIVE_MINUTE 5 * 60  // In milliseconds
+#define ONE_MINUTE 1 * 60 
+#define FIVE_MINUTE 5 * 60
 
-const unsigned int Timer::MAX_TIME = 60 * 60;  // 1 hour in milliseconds
-const unsigned int Timer::MIN_TIME = 0;        // 0 seconds
+const unsigned int Timer::MAX_TIME = 60 * 60;  // 1 hour in seconds
+const unsigned int Timer::MIN_TIME = 0;        // 0 second
 
 Timer::Timer(unsigned int startTime) {
   lastTime = 0;
