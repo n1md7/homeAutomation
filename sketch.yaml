@@ -7,6 +7,7 @@ profiles:
     libraries:
       - LiquidCrystal (1.0.7)
       - Time (1.6.1)
+      - AbleButtons (0.3.0)
   mega:
     notes: Arduino Mega
     fqbn: arduino:avr:mega
@@ -15,3 +16,4 @@ profiles:
     libraries:
       - LiquidCrystal (1.0.7)
       - Time (1.6.1)
+      - AbleButtons (0.3.0)

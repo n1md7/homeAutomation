@@ -14,6 +14,13 @@
 
 ### Compile and upload
 
+Check your arduino port with `arduino-cli board list` and replace `/dev/cu.usbmodem144101` with your port
+```bash
+arduino-cli board list
+# or
+ls -l /dev/*.* | grep usb
+```
+
 ```bash
 arduino-cli compile --profile mega
 arduino-cli upload --port /dev/cu.usbmodem144101 --profile mega
